@@ -1,0 +1,28 @@
+import java.util.Arrays;
+class Solution {
+    
+public String solution(String[] participant, String[] completion) {
+        
+        Arrays.sort(participant);
+        Arrays.sort(completion);
+        
+        for(int i = 0; i < completion.length; i++) {
+        	
+        	for(int j = 0; j < participant.length; j++) {
+        		if(completion[i].equals(participant[j]) && completion[i] != null) {
+        			participant[j] = "null";
+        			break;
+        		}
+        		
+        	}
+        	
+        }
+        for(int i = 0; i < participant.length; i++) {
+        	if(!participant[i].equals("null")) {
+        		return participant[i];
+        	}
+        }
+    	
+        return "";
+    }
+}
