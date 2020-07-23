@@ -1,0 +1,122 @@
+import java.util.Arrays;
+class Solution {
+    public int[] solution(int[] answers) {
+        int[] answer = {};
+        int[] arr = new int[3];
+        int[] a = {1,2,3,4,5};
+        int[] b = {2,1,2,3,2,4,2,5};
+        int[] c = {3,3,1,1,2,2,4,4,5,5};
+        int first = 1;
+        int second = 2;
+        int third = 3;
+        int aa = 0;
+        int bb = 0;
+        int cc = 0;
+        int num1 = 0;
+        int num2 = 0;
+        int num3 = 0;
+        for(int i = 0; i < answers.length; i++) {
+            num1 = i % 5;
+            num2 = i % 8;
+            num3 = i % 10;
+            if(answers[i] == a[num1]) {
+                aa++;
+            }
+            if(answers[i] == b[num2]) {
+                bb++;
+            }
+            if(answers[i] == c[num3]) {
+                cc++;
+            }
+        }
+        
+        if(aa > bb) {
+            if(aa > cc) {
+                answer = new int[1];
+                answer[0] = 1;
+                //aa;
+            } else if(aa == cc) {
+                answer = new int[2];
+                answer[0] = 1;
+                answer[1] = 3;
+                //aa;cc;
+            }
+            else {
+                answer = new int[1];
+                answer[0] = 3;
+                //cc;
+            }
+        } else if(aa < bb) {
+            if(cc < bb) {
+                answer = new int[1];
+                answer[0] = 2;
+                //bb;
+            } else if(cc == bb) {
+                answer = new int[2];
+                answer[0] = 2;
+                answer[1] = 3;
+                //cc;bb;
+            }
+            else {
+                answer = new int[1];
+                answer[0] = 3;
+                //cc;
+            }
+        } else if(aa < cc) {
+            if(bb < cc) {
+                answer = new int[1];
+                answer[0] = 3;
+            } else if(bb == cc) {
+                answer = new int[2];
+                answer[0] = 2;
+                answer[1] = 3;
+            } else {
+                answer = new int[1];
+                answer[0] = 2;
+            }
+        }
+        else if(aa == bb && aa == cc) {
+            
+            answer = new int[3];
+            answer[0] = 1;
+            answer[1] = 2;
+            answer[2] = 3;
+            //aa;bb;cc;
+        } else if(aa == bb) {
+            if(aa > cc) {
+                answer = new int[2];
+                answer[0] = 1;
+                answer[1] = 2;
+                //aa;bb;
+            } else {
+                answer = new int[2];
+                answer[0] = 3;
+                //cc;
+            }
+        } else if(aa == cc) {
+            if(aa > bb) {
+                answer = new int[2];
+                answer[0] = 1;
+                answer[1] = 3;
+                //aa;cc;
+            } else {
+                answer = new int[1];
+                answer[0] = 2;
+                //bb;
+            }
+        } else if(bb == cc) {
+            if(aa < bb) {
+                answer = new int[2];
+                answer[0] = 2;
+                answer[1] = 3;
+                //bb;cc;
+            } else {
+                answer = new int[2];
+                answer[0] = 1;
+                //aa;
+            }
+        }
+        
+        return answer;
+    }
+}
