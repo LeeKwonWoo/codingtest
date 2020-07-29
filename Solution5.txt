@@ -1,0 +1,47 @@
+/*
+1월 - 31
+2월 - 29일
+3월 - 31
+4월 - 30
+5월 - 31
+6월 - 30
+7월 - 31
+8월 - 31
+9월 - 30
+10월 - 31
+11월 - 30
+12월 - 31
+*/
+class Solution {
+    public String solution(int a, int b) {
+        String answer = "";
+        String[] days = {"SUN","MON","TUE","WED","THU","FRI","SAT"};
+        int count = 4;
+        
+        for(int i = 1; i <= a; i++) {
+            if(i == a) {
+                for(int k = 1; k <= b; k++) {
+                    count++;
+                }
+            } else {
+                if(i == 2) {
+                    for(int k = 1; k <= 29; k++) {
+                        count++;
+                    }
+                } else if (i == 4 || i == 6 || i == 9 || i == 11) {
+                    for(int k = 1; k <= 30; k++) {
+                        count++;
+                    }
+                } else {
+                    for(int k = 1; k <= 31; k++) {
+                        count++;
+                    }
+                }
+            }
+                
+            
+        }
+        answer = days[count % 7];
+        return answer;
+    }
+}
